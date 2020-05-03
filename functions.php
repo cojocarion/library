@@ -323,6 +323,8 @@ function list_files($fileid_array, $userperms_obj, $dataDir, $showCheckBox = fal
         $dept_name = $file_obj->getDeptName();
         $realname = $file_obj->getRealname();
         $cat_name= $file_obj->getCategoryName();
+        $comment= $file_obj->getComment();
+
 
         //Get the file size in bytes.
         $filesize = display_filesize($dataDir . $fileid . '.dat');
@@ -382,7 +384,8 @@ function list_files($fileid_array, $userperms_obj, $dataDir, $showCheckBox = fal
                 'filesize'=>$filesize,
                 'lock'=>$lock,
                 'showCheckbox'=>$showCheckBox,
-                'rejectpage'=>$rejectpage
+                'rejectpage'=>$rejectpage,
+                'comment'=>$comment
         );
         //print_r($file_list_arr);exit;
     }

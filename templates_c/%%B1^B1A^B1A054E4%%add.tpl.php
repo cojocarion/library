@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-04-26 12:25:03
+<?php /* Smarty version 2.6.28, created on 2020-05-03 13:45:45
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/add.tpl */ ?>
 
 
@@ -94,6 +94,12 @@ if ($this->_foreach['loop1']['total'] > 0):
             <?php endforeach; endif; unset($_from); ?>
             </select>
         </td>
+    </tr>
+      <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Autor</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="comment" size="50"></td>
     </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">

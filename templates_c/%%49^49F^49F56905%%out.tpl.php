@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-04-26 12:49:00
+<?php /* Smarty version 2.6.28, created on 2020-05-03 13:55:18
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/out.tpl */ ?>
 <div id="filetable_wrapper">
 <form name="table" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>
@@ -12,14 +12,14 @@
             <th class="sorting">ID</th>
             <th><?php echo $this->_tpl_vars['g_lang_label_view']; ?>
 </th>
-            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_file_name']; ?>
-</th>
-            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_description']; ?>
+            <th class="sorting">Disciplina</th>
+            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
 </th>
             <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_author']; ?>
 </th>
-            <th class="sorting">Disciplina</th>
-            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
+            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_file_name']; ?>
+</th>
+            <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_description']; ?>
 </th>
             <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_size']; ?>
 </th>
@@ -49,16 +49,16 @@ if ($this->_foreach['file_list']['total'] > 0):
 "><?php echo $this->_tpl_vars['g_lang_outpage_view']; ?>
 </a></td>
                 <?php endif; ?>
+                 <td><?php echo $this->_tpl_vars['item']['cat_name']; ?>
+</td>
+                 <td><?php echo $this->_tpl_vars['item']['dept_name']; ?>
+</td>
+                   <td><?php echo $this->_tpl_vars['item']['comment']; ?>
+</td>
             <td><a href="<?php echo $this->_tpl_vars['item']['details_link']; ?>
 "><?php echo $this->_tpl_vars['item']['filename']; ?>
 </a></td>
             <td ><?php echo $this->_tpl_vars['item']['description']; ?>
-</td>
-            <td><?php echo $this->_tpl_vars['item']['owner_name']; ?>
-</td>
-             <td><?php echo $this->_tpl_vars['item']['cat_name']; ?>
-</td>
-            <td><?php echo $this->_tpl_vars['item']['dept_name']; ?>
 </td>
             <td ><?php echo $this->_tpl_vars['item']['filesize']; ?>
 </td>
@@ -82,14 +82,14 @@ if ($this->_foreach['file_list']['total'] > 0):
             <th>ID</th>
             <th><?php echo $this->_tpl_vars['g_lang_label_view']; ?>
 </th>
+            <th>Disciplina</th>
+             <th><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
+</th>
+             <th><?php echo $this->_tpl_vars['g_lang_label_author']; ?>
+</th>
             <th><?php echo $this->_tpl_vars['g_lang_label_file_name']; ?>
 </th>
             <th><?php echo $this->_tpl_vars['g_lang_label_description']; ?>
-</th>
-            <th><?php echo $this->_tpl_vars['g_lang_label_author']; ?>
-</th>
-            <th>Disciplina</th>
-            <th><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
 </th>
             <th><?php echo $this->_tpl_vars['g_lang_label_size']; ?>
 </th>
