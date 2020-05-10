@@ -120,7 +120,6 @@ if (!isset($_POST['submit'])) {
         array_push($cats_array, $avail_category);
     }
 
-
     //////Populate department perm list/////////////////
     $dept_perms_array = array();
     foreach ($departments_array as $dept) {
