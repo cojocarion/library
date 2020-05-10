@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 03, 2015 at 10:19 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 10, 2020 at 09:18 PM
+-- Server version: 8.0.17
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `opendocman`
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `odm_access_log`
 --
 
+DROP TABLE IF EXISTS `odm_access_log`;
 CREATE TABLE IF NOT EXISTS `odm_access_log` (
   `file_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -37,16 +40,24 @@ CREATE TABLE IF NOT EXISTS `odm_access_log` (
 -- Dumping data for table `odm_access_log`
 --
 
-INSERT INTO `odm_access_log` (`file_id`, `user_id`, `timestamp`, `action`) VALUES
-(1, 1, '2015-05-30 08:33:40', 'A'),
-(1, 1, '2015-05-30 08:33:54', 'Y'),
-(1, 1, '2015-05-30 08:47:11', 'X'),
-(2, 1, '2015-05-30 08:47:56', 'A'),
-(2, 1, '2015-05-30 08:48:20', 'Y'),
-(2, 1, '2015-05-30 08:49:25', 'V'),
-(2, 1, '2015-05-30 08:49:29', 'V'),
-(2, 1, '2015-05-30 08:50:39', 'M'),
-(2, 2, '2015-05-30 08:50:48', 'V');
+INSERT INTO `odm_access_log` (`file_id`, `user_id`, `action`) VALUES
+(1, 1, 'A'),
+(1, 1, 'Y'),
+(1, 1, 'X'),
+(2, 1, 'A'),
+(2, 1, 'Y'),
+(2, 1, 'V'),
+(2, 1, 'V'),
+(2, 1, 'M'),
+(2, 2, 'V'),
+(3, 1, 'A'),
+(4, 1, 'A'),
+(3, 1, 'V'),
+(3, 1, 'Y'),
+(5, 1, 'A'),
+(5, 1, 'Y'),
+(6, 3, 'A'),
+(3, 1, 'V');
 
 -- --------------------------------------------------------
 
@@ -54,8 +65,9 @@ INSERT INTO `odm_access_log` (`file_id`, `user_id`, `timestamp`, `action`) VALUE
 -- Table structure for table `odm_admin`
 --
 
+DROP TABLE IF EXISTS `odm_admin`;
 CREATE TABLE IF NOT EXISTS `odm_admin` (
-  `id` int(11) unsigned DEFAULT NULL,
+  `id` int(11) UNSIGNED DEFAULT NULL,
   `admin` tinyint(4) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -65,7 +77,8 @@ CREATE TABLE IF NOT EXISTS `odm_admin` (
 
 INSERT INTO `odm_admin` (`id`, `admin`) VALUES
 (1, 1),
-(2, 0);
+(2, 0),
+(3, 0);
 
 -- --------------------------------------------------------
 
@@ -73,33 +86,19 @@ INSERT INTO `odm_admin` (`id`, `admin`) VALUES
 -- Table structure for table `odm_category`
 --
 
+DROP TABLE IF EXISTS `odm_category`;
 CREATE TABLE IF NOT EXISTS `odm_category` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_category`
 --
 
 INSERT INTO `odm_category` (`id`, `name`) VALUES
-(1, 'Matematica'),
-(2, 'Limba romana'),
-(3, 'Limba rusa'),
-(4, 'Limba franceza');
-(5, 'Limba spaniola');
-(6, 'Limba germana');
-(7, 'Istorie');
-(8, 'Fizica');
-(9, 'Informatica');
-(10, 'Chimie');
-(11, 'Biologie');
-(12, 'Arta plastica');
-(13, 'Educatia tehnologica');
-(14, 'Educatia muzicala');
-(15, 'Educatia Stiinte');
-(16, 'Educatia plastica');
+(1, 'Matematica');
 
 -- --------------------------------------------------------
 
@@ -107,35 +106,40 @@ INSERT INTO `odm_category` (`id`, `name`) VALUES
 -- Table structure for table `odm_data`
 --
 
+DROP TABLE IF EXISTS `odm_data`;
 CREATE TABLE IF NOT EXISTS `odm_data` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `category` int(11) unsigned NOT NULL DEFAULT '0',
-  `owner` int(11) unsigned DEFAULT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `owner` int(11) UNSIGNED DEFAULT NULL,
   `realname` varchar(255) NOT NULL DEFAULT '',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT '',
   `status` smallint(6) DEFAULT NULL,
-  `department` smallint(6) unsigned DEFAULT NULL,
+  `department` smallint(6) UNSIGNED DEFAULT NULL,
   `default_rights` tinyint(4) DEFAULT NULL,
   `publishable` tinyint(4) DEFAULT NULL,
-  `reviewer` int(11) unsigned DEFAULT NULL,
+  `reviewer` int(11) UNSIGNED DEFAULT NULL,
   `reviewer_comments` varchar(255) DEFAULT NULL,
+  `Denumire` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `informatie` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `data_idx` (`id`,`owner`),
   KEY `id` (`id`),
   KEY `id_2` (`id`),
   KEY `publishable` (`publishable`),
   KEY `description` (`description`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_data`
 --
 
-INSERT INTO `odm_data` (`id`, `category`, `owner`, `realname`, `created`, `description`, `comment`, `status`, `department`, `default_rights`, `publishable`, `reviewer`, `reviewer_comments`) VALUES
-(1, 3, 1, 'VideoConference.docx', '2015-05-30 11:33:39', '', '', 0, 1, 0, 2, 1, 'To=Author(s);Subject=;Comments=;'),
-(2, 3, 1, 'VideoConference.docx', '2015-05-30 11:47:56', '', '', 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;');
+INSERT INTO `odm_data` (`id`, `category`, `owner`, `realname`, `created`, `description`, `comment`, `status`, `department`, `default_rights`, `publishable`, `reviewer`, `reviewer_comments`, `Denumire`, `informatie`) VALUES
+(3, 1, 1, 'CEC.docx', '2020-05-10 20:22:11', 'gddfdf', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'aaaaaaa', NULL),
+(4, 1, 1, 'CEC.docx', '2020-05-10 20:22:40', 'dfdfddfdaa', NULL, 0, 1, 0, 0, NULL, NULL, 'aaaa', NULL),
+(5, 1, 1, 'CEC.docx', '2020-05-10 20:53:28', 'fgfgfg', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'denumire', 'informatie'),
+(6, 1, 3, 'CEC.docx', '2020-05-10 20:55:10', 'djfdjfh', NULL, 0, NULL, 0, 0, NULL, NULL, 'djfhdjfh', 'jdghjdf');
 
 -- --------------------------------------------------------
 
@@ -143,11 +147,12 @@ INSERT INTO `odm_data` (`id`, `category`, `owner`, `realname`, `created`, `descr
 -- Table structure for table `odm_department`
 --
 
+DROP TABLE IF EXISTS `odm_department`;
 CREATE TABLE IF NOT EXISTS `odm_department` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_department`
@@ -155,17 +160,6 @@ CREATE TABLE IF NOT EXISTS `odm_department` (
 
 INSERT INTO `odm_department` (`id`, `name`) VALUES
 (1, 'Clasa 1');
-(2, 'Clasa 2');
-(3, 'Clasa 3');
-(4, 'Clasa 4');
-(5, 'Clasa 5');
-(6, 'Clasa 6');
-(7, 'Clasa 7');
-(8, 'Clasa 8');
-(9, 'Clasa 9');
-(10, 'Clasa 10');
-(11, 'Clasa 11');
-(12, 'Clasa 12');
 
 -- --------------------------------------------------------
 
@@ -173,9 +167,10 @@ INSERT INTO `odm_department` (`id`, `name`) VALUES
 -- Table structure for table `odm_dept_perms`
 --
 
+DROP TABLE IF EXISTS `odm_dept_perms`;
 CREATE TABLE IF NOT EXISTS `odm_dept_perms` (
-  `fid` int(11) unsigned DEFAULT NULL,
-  `dept_id` int(11) unsigned DEFAULT NULL,
+  `fid` int(11) UNSIGNED DEFAULT NULL,
+  `dept_id` int(11) UNSIGNED DEFAULT NULL,
   `rights` tinyint(4) NOT NULL DEFAULT '0',
   KEY `rights` (`rights`),
   KEY `dept_id` (`dept_id`),
@@ -188,7 +183,11 @@ CREATE TABLE IF NOT EXISTS `odm_dept_perms` (
 
 INSERT INTO `odm_dept_perms` (`fid`, `dept_id`, `rights`) VALUES
 (1, 1, 1),
-(2, 1, 1);
+(2, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(5, 1, 1),
+(6, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -196,9 +195,10 @@ INSERT INTO `odm_dept_perms` (`fid`, `dept_id`, `rights`) VALUES
 -- Table structure for table `odm_dept_reviewer`
 --
 
+DROP TABLE IF EXISTS `odm_dept_reviewer`;
 CREATE TABLE IF NOT EXISTS `odm_dept_reviewer` (
-  `dept_id` int(11) unsigned DEFAULT NULL,
-  `user_id` int(11) unsigned DEFAULT NULL
+  `dept_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -214,12 +214,13 @@ INSERT INTO `odm_dept_reviewer` (`dept_id`, `user_id`) VALUES
 -- Table structure for table `odm_filetypes`
 --
 
+DROP TABLE IF EXISTS `odm_filetypes`;
 CREATE TABLE IF NOT EXISTS `odm_filetypes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_filetypes`
@@ -279,8 +280,9 @@ INSERT INTO `odm_filetypes` (`id`, `type`, `active`) VALUES
 -- Table structure for table `odm_log`
 --
 
+DROP TABLE IF EXISTS `odm_log`;
 CREATE TABLE IF NOT EXISTS `odm_log` (
-  `id` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_by` varchar(25) DEFAULT NULL,
   `note` text,
@@ -295,7 +297,11 @@ CREATE TABLE IF NOT EXISTS `odm_log` (
 
 INSERT INTO `odm_log` (`id`, `modified_on`, `modified_by`, `note`, `revision`) VALUES
 (1, '2015-05-30 11:33:40', 'admin', 'Initial import', 'current'),
-(2, '2015-05-30 11:47:56', 'admin', 'Initial import', 'current');
+(2, '2015-05-30 11:47:56', 'admin', 'Initial import', 'current'),
+(3, '2020-05-10 20:22:11', 'admin', 'Initial import', 'current'),
+(4, '2020-05-10 20:22:40', 'admin', 'Initial import', 'current'),
+(5, '2020-05-10 20:53:29', 'admin', 'Initial import', 'current'),
+(6, '2020-05-10 20:55:10', 'user', 'Initial import', 'current');
 
 -- --------------------------------------------------------
 
@@ -303,12 +309,13 @@ INSERT INTO `odm_log` (`id`, `modified_on`, `modified_by`, `note`, `revision`) V
 -- Table structure for table `odm_odmsys`
 --
 
+DROP TABLE IF EXISTS `odm_odmsys`;
 CREATE TABLE IF NOT EXISTS `odm_odmsys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sys_name` varchar(16) DEFAULT NULL,
   `sys_value` varchar(255) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_odmsys`
@@ -323,6 +330,7 @@ INSERT INTO `odm_odmsys` (`id`, `sys_name`, `sys_value`) VALUES
 -- Table structure for table `odm_rights`
 --
 
+DROP TABLE IF EXISTS `odm_rights`;
 CREATE TABLE IF NOT EXISTS `odm_rights` (
   `RightId` tinyint(4) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL
@@ -346,15 +354,16 @@ INSERT INTO `odm_rights` (`RightId`, `Description`) VALUES
 -- Table structure for table `odm_settings`
 --
 
+DROP TABLE IF EXISTS `odm_settings`;
 CREATE TABLE IF NOT EXISTS `odm_settings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `validation` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_settings`
@@ -362,9 +371,9 @@ CREATE TABLE IF NOT EXISTS `odm_settings` (
 
 INSERT INTO `odm_settings` (`id`, `name`, `value`, `description`, `validation`) VALUES
 (1, 'debug', 'False', '(True/False) - Default=False - Debug the installation (not working)', 'bool'),
-(2, 'demo', 'False', '(True/False) This setting is for a demo installation, where random people will be all loggging in as the same username/password like "demo/demo". This will keep users from removing files, users, etc.', 'bool'),
+(2, 'demo', 'False', '(True/False) This setting is for a demo installation, where random people will be all loggging in as the same username/password like \"demo/demo\". This will keep users from removing files, users, etc.', 'bool'),
 (3, 'authen', 'mysql', '(Default = mysql) Currently only MySQL authentication is supported', ''),
-(4, 'title', 'Document Repository', 'This is the browser window title', 'maxsize=255'),
+(4, 'title', 'Biblioteca Online', 'This is the browser window title', 'maxsize=255'),
 (5, 'site_mail', 'root@localhost', 'The email address of the administrator of this site', 'email|maxsize=255|req'),
 (6, 'root_id', '1', 'This variable sets the root user id.  The root user will be able to access all files and have authority for everything.', 'num|req'),
 (7, 'dataDir', 'C:/wamp/odm_data/', 'location of file repository. This should ideally be outside the Web server root. Make sure the server has permissions to read/write files to this folder!. (Examples: Linux - /var/www/document_repository/ : Windows - c:/document_repository/', 'maxsize=255'),
@@ -377,7 +386,7 @@ INSERT INTO `odm_settings` (`id`, `name`, `value`, `description`, `validation`) 
 (14, 'try_nis', 'False', 'Attempt NIS password lookups from YP server?', 'bool'),
 (15, 'theme', 'tweeter', 'Which theme to use?', ''),
 (16, 'language', 'romanian', 'Set the default language (english, spanish, turkish, etc.). Local users may override this setting. Check include/language folder for languages available', 'alpha|req'),
-(17, 'base_url', 'http://localhost/doc', 'Set this to the url of the site. No need for trailing "/" here', 'url'),
+(17, 'base_url', 'http://localhost/doc', 'Set this to the url of the site. No need for trailing \"/\" here', 'url'),
 (18, 'max_query', '500', 'Set this to the maximum number of rows you want to be returned in a file listing. If your file list is slow decrease this value.', 'num');
 
 -- --------------------------------------------------------
@@ -386,13 +395,14 @@ INSERT INTO `odm_settings` (`id`, `name`, `value`, `description`, `validation`) 
 -- Table structure for table `odm_udf`
 --
 
+DROP TABLE IF EXISTS `odm_udf`;
 CREATE TABLE IF NOT EXISTS `odm_udf` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `table_name` varchar(50) DEFAULT NULL,
   `display_name` varchar(16) DEFAULT NULL,
   `field_type` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -400,11 +410,12 @@ CREATE TABLE IF NOT EXISTS `odm_udf` (
 -- Table structure for table `odm_user`
 --
 
+DROP TABLE IF EXISTS `odm_user`;
 CREATE TABLE IF NOT EXISTS `odm_user` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(25) NOT NULL DEFAULT '',
   `password` varchar(50) NOT NULL DEFAULT '',
-  `department` int(11) unsigned DEFAULT NULL,
+  `department` int(11) UNSIGNED DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
@@ -413,7 +424,7 @@ CREATE TABLE IF NOT EXISTS `odm_user` (
   `can_add` tinyint(1) DEFAULT '1',
   `can_checkin` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_user`
@@ -421,7 +432,8 @@ CREATE TABLE IF NOT EXISTS `odm_user` (
 
 INSERT INTO `odm_user` (`id`, `username`, `password`, `department`, `phone`, `Email`, `last_name`, `first_name`, `pw_reset_code`, `can_add`, `can_checkin`) VALUES
 (1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 1, '5555551212', 'admin@example.com', 'User', 'Admin', '', 1, 1),
-(2, 'user1', '24c9e15e52afc47c225b757e7bee1f9d', 1, '', 'user@user.com', 'User1', 'User1', NULL, 1, 1);
+(2, 'user1', '24c9e15e52afc47c225b757e7bee1f9d', 1, '', 'user@user.com', 'User1', 'User1', NULL, 1, 1),
+(3, 'user', '24c9e15e52afc47c225b757e7bee1f9d', NULL, NULL, 'user@mailiantor.com', 'user', 'user', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -429,9 +441,10 @@ INSERT INTO `odm_user` (`id`, `username`, `password`, `department`, `phone`, `Em
 -- Table structure for table `odm_user_perms`
 --
 
+DROP TABLE IF EXISTS `odm_user_perms`;
 CREATE TABLE IF NOT EXISTS `odm_user_perms` (
-  `fid` int(11) unsigned DEFAULT NULL,
-  `uid` int(11) unsigned NOT NULL DEFAULT '0',
+  `fid` int(11) UNSIGNED DEFAULT NULL,
+  `uid` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `rights` tinyint(4) NOT NULL DEFAULT '0',
   KEY `user_perms_idx` (`fid`,`uid`,`rights`),
   KEY `fid` (`fid`),
@@ -446,7 +459,12 @@ CREATE TABLE IF NOT EXISTS `odm_user_perms` (
 INSERT INTO `odm_user_perms` (`fid`, `uid`, `rights`) VALUES
 (1, 1, 4),
 (2, 1, 4),
-(2, 2, 4);
+(2, 2, 4),
+(3, 1, 4),
+(4, 1, 4),
+(5, 1, 4),
+(6, 3, 4);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

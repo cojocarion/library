@@ -68,6 +68,18 @@
         </td>
         <td colspan="3"><input tabindex="5" type="Text" name="comment" size="50"></td>
     </tr>
+     <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="Denumire" size="50"></td>
+    </tr>
+      <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Limba</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="informatie" size="50"></td>
+    </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">
         <td>
@@ -84,16 +96,4 @@
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">{$g_lang_label_description}</a>
         </td>
         <td colspan="3"><input tabindex="5" type="Text" name="description" size="50"></td>
-    </tr>
-      <tr>
-        <td>
-            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>
-        </td>
-        <td colspan="3"><input tabindex="5" type="Text" name="Denumire" size="50"></td>
-    </tr>
-      <tr>
-        <td>
-            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Limba</a>
-        </td>
-        <td colspan="3"><input tabindex="5" type="Text" name="informatie" size="50"></td>
     </tr>
