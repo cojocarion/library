@@ -119,7 +119,7 @@ if (!isset($_POST['submit'])) {
     foreach ($avail_categories as $avail_category) {
         array_push($cats_array, $avail_category);
     }
-    
+
 
     //////Populate department perm list/////////////////
     $dept_perms_array = array();

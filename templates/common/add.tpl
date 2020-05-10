@@ -62,6 +62,12 @@
             </select>
         </td>
     </tr>
+      <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Autor</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="comment" size="50"></td>
+    </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">
         <td>
