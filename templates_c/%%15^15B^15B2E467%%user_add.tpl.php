@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-04-26 12:09:23
+<?php /* Smarty version 2.6.28, created on 2020-05-10 17:54:20
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/user_add.tpl */ ?>
 <form name="add_user" id="add_user" action="user.php" method="POST" enctype="multipart/form-data">
     <table border="0" cellspacing="5" cellpadding="5">

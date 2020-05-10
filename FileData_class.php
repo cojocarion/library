@@ -57,6 +57,8 @@ if (!defined('FileData_class')) {
     var $admin_users;
     var $filesize;
     var $isLocked;
+    var $Denumire;
+    var $informatie;
     protected $connection;
 
     function FileData($id, $connection)
@@ -118,7 +120,9 @@ if (!defined('FileData_class')) {
                 comment,
                 status,
                 department,
-                default_rights
+                default_rights,
+                Denumire,
+                informatie
               FROM
                 {$GLOBALS['CONFIG']['db_prefix']}$this->tablename
               WHERE
@@ -137,6 +141,8 @@ if (!defined('FileData_class')) {
           $this->description = stripslashes($row['description']);
           $this->comment = stripslashes($row['comment']);
           $this->status = $row['status'];
+          $this->Denumire = $row['Denumire'];
+          $this->informatie = $row['informatie'];
           $this->department = $row['department'];
           $this->default_rights = $row['default_rights'];
         }
@@ -161,7 +167,9 @@ if (!defined('FileData_class')) {
                 comment = :comment,
                 status = :status,
                 department = :department,
-                default_rights = :default_rights
+                default_rights = :default_rights,
+                Denumire = :Denumire,
+                informatie = :informatie,
                WHERE
                 id = :id
             ";
@@ -172,6 +180,8 @@ if (!defined('FileData_class')) {
         ':owner' => $this->owner,
         ':description' => $this->description,
         ':comment' => $this->comment,
+        ':Denumire' => $this->Denumire,
+        ':informatie' => $this->informatie,
         ':status' => $this->status,
         ':department' => $this->department,
         ':default_rights' => $this->default_rights,
@@ -228,6 +238,7 @@ if (!defined('FileData_class')) {
 
       return $name;
     }
+
 
     /**
      * return a boolean on whether the user ID $uid is the owner of this file
@@ -341,6 +352,26 @@ if (!defined('FileData_class')) {
     function getComment()
     {
       return $this->comment;
+    }
+
+    function getObjectName()
+    {
+      return $this->Denumire;
+    }
+
+    function setObjectName()
+    {
+      return $this->Denumire;
+    }
+
+    function getInformationName()
+    {
+      return $this->informatie;
+    }
+
+    function setInformationName($value)
+    {
+      $this->informatie = $value;
     }
 
     /**

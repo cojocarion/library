@@ -82,6 +82,8 @@ if (!isset($_REQUEST['submit'])) {
         $realname = $filedata->getName();
         $description = $filedata->getDescription();
         $comment = $filedata->getComment();
+        $Denumire = $filedata->getObjectName();
+        $informatie = $filedata->getInformationName();
         $owner_id = $filedata->getOwner();
         $department = $filedata->getDepartment();
 
@@ -152,6 +154,8 @@ if (!isset($_REQUEST['submit'])) {
         $GLOBALS['smarty']->assign('pre_selected_department', $department);
         $GLOBALS['smarty']->assign('description', $description);
         $GLOBALS['smarty']->assign('comment', $comment);
+        $GLOBALS['smarty']->assign('Denumire', $Denumire);
+        $GLOBALS['smarty']->assign('informatie', $informatie);
         $GLOBALS['smarty']->assign('db_prefix', $GLOBALS['CONFIG']['db_prefix']);
        
         display_smarty_template('edit.tpl');
@@ -197,6 +201,8 @@ if (!isset($_REQUEST['submit'])) {
     $filedata->setCategory($_REQUEST['category']);
     $filedata->setDescription($_REQUEST['description']);
     $filedata->setComment($_REQUEST['comment']);
+    $filedata->setObjectName($_REQUEST['Denumire']);
+    $filedata->setInformationName($_REQUEST['informatie']);
     if (isset($_REQUEST['file_owner'])) {
         $filedata->setOwner($_REQUEST['file_owner']);
     }

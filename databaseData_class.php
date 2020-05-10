@@ -19,10 +19,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-if( !defined("databaseData_class") );
-{
+if (!defined("databaseData_class")); {
     define("databaseData_class", "true", false);
-    
+
     //DO NOT INSTANTIATE THIS ABSTRACT CLASS
     class databaseData
     {
@@ -130,9 +129,9 @@ if( !defined("databaseData_class") );
             $result = $stmt->fetchAll();
             $row_count = $stmt->rowCount();
 
-            if( $row_count > $this->result_limit AND result_limit != 'UNLIMITED') {
+            if ($row_count > $this->result_limit and result_limit != 'UNLIMITED') {
                 /*if the result is more than expected error var is set*/
-                $this->error='Error: non-unique';
+                $this->error = 'Error: non-unique';
             } elseif ($row_count == 0) {
                 // record must exist.  Error message is stored
                 $this->error = 'Error: unable to fine id in database';
@@ -149,7 +148,7 @@ if( !defined("databaseData_class") );
          */
         function findName()
         {
-            
+
             $name = '';
             $query = "SELECT
                         $this->field_name
@@ -164,8 +163,8 @@ if( !defined("databaseData_class") );
             $result = $stmt->fetchAll();
             $row_count = $stmt->rowCount();
 
-            if($row_count > $this->result_limit AND result_limit != 'UNLIMITED') {
-                $this->error='Error: non-unique';
+            if ($row_count > $this->result_limit and result_limit != 'UNLIMITED') {
+                $this->error = 'Error: non-unique';
             } elseif ($row_count == 0) {
                 $this->error = 'Error: unable to find id in database';
             } else {
@@ -177,7 +176,7 @@ if( !defined("databaseData_class") );
         /**
          * assuming that userid will never change
          */
-        function reloadData() 
+        function reloadData()
         {
             //Since all the data are set at the time when $id or $name
             //is set.  If another program access the DB and changes any
@@ -214,25 +213,21 @@ if( !defined("databaseData_class") );
             $result_array = $high_priority_array; //$high is being kept
             $result_array_index = sizeof($high_priority_array);
             //iterate through $low
-            for($l = 0 ; $l<sizeof($low_priority_array); $l++) 
-            {
+            for ($l = 0; $l < sizeof($low_priority_array); $l++) {
                 //each $low element will be compared with
-			    //every $high element
-                for($r = 0; $r<sizeof($result_array); $r++)
-                {
-                    if($result_array[$r] == $low_priority_array[$l])
-                    {
+                //every $high element
+                for ($r = 0; $r < sizeof($result_array); $r++) {
+                    if ($result_array[$r] == $low_priority_array[$l]) {
                         //if a $low element is already in the
-					    //$high array, it is ignored
+                        //$high array, it is ignored
                         $r = sizeof($result_array);
                         $found = true;
                     }
                 }
 
                 //if certain $low element is not found in $high, it
-			    //will be append to the back of high
-                if(!$found)
-                {
+                //will be append to the back of high
+                if (!$found) {
                     $result_array[$result_array_index++] = $low_priority_array[$l];
                 }
                 $found = false;
@@ -247,12 +242,10 @@ if( !defined("databaseData_class") );
         function convertToFileDataOBJ($fid_array)
         {
             $file_data_array = array();
-            for($i = 0; $i<sizeof($fid_array); $i++)
-            {
+            for ($i = 0; $i < sizeof($fid_array); $i++) {
                 $file_data_array[$i] = new FileData($fid_array[$i], $this->connection);
             }
             return $file_data_array;
         }
-
     }
 }

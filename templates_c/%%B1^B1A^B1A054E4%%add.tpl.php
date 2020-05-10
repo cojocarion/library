@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-04-26 12:25:03
+<?php /* Smarty version 2.6.28, created on 2020-05-10 18:13:05
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/add.tpl */ ?>
 
 
@@ -95,6 +95,22 @@ if ($this->_foreach['loop1']['total'] > 0):
             </select>
         </td>
     </tr>
+     <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Category"  onClick="return popup(this, 'Help')" style="text-decoration:none">Clasa</a>
+        </td>
+        <td colspan=3>
+            <select tabindex=2 name="class" >
+            <?php $_from = $this->_tpl_vars['cats_array']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['class']):
+?>
+                <option value="<?php echo $this->_tpl_vars['class']['id']; ?>
+"><?php echo $this->_tpl_vars['class']['name']; ?>
+</option>
+            <?php endforeach; endif; unset($_from); ?>
+            </select>
+        </td>
+    </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">
         <td>
@@ -117,4 +133,16 @@ unset($_smarty_tpl_vars);
 </a>
         </td>
         <td colspan="3"><input tabindex="5" type="Text" name="description" size="50"></td>
+    </tr>
+      <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="Denumire" size="50"></td>
+    </tr>
+      <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>
+        </td>
+        <td colspan="3"><input tabindex="5" type="Text" name="informatie" size="50"></td>
     </tr>

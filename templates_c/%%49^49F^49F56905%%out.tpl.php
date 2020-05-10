@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-04-26 12:49:00
+<?php /* Smarty version 2.6.28, created on 2020-05-10 20:57:31
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/out.tpl */ ?>
 <div id="filetable_wrapper">
 <form name="table" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>
@@ -18,6 +18,8 @@
 </th>
             <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_author']; ?>
 </th>
+            <th class="sorting">Denumire</th>
+            <th class="sorting">Limba</th>
             <th class="sorting">Disciplina</th>
             <th class="sorting"><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
 </th>
@@ -56,6 +58,10 @@ if ($this->_foreach['file_list']['total'] > 0):
 </td>
             <td><?php echo $this->_tpl_vars['item']['owner_name']; ?>
 </td>
+             <td><?php echo $this->_tpl_vars['item']['Denumire']; ?>
+</td>
+             <td><?php echo $this->_tpl_vars['item']['informatie']; ?>
+</td>
              <td><?php echo $this->_tpl_vars['item']['cat_name']; ?>
 </td>
             <td><?php echo $this->_tpl_vars['item']['dept_name']; ?>
@@ -88,6 +94,8 @@ if ($this->_foreach['file_list']['total'] > 0):
 </th>
             <th><?php echo $this->_tpl_vars['g_lang_label_author']; ?>
 </th>
+             <th>Denumire</th>
+            <th>Limba</th>
             <th>Disciplina</th>
             <th><?php echo $this->_tpl_vars['g_lang_label_department']; ?>
 </th>
