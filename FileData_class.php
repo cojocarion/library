@@ -59,6 +59,7 @@ if (!defined('FileData_class')) {
     var $isLocked;
     var $Denumire;
     var $informatie;
+    var $file_author;
     protected $connection;
 
     function FileData($id, $connection)
@@ -122,7 +123,8 @@ if (!defined('FileData_class')) {
                 department,
                 default_rights,
                 Denumire,
-                informatie
+                informatie,
+                file_author
               FROM
                 {$GLOBALS['CONFIG']['db_prefix']}$this->tablename
               WHERE
@@ -143,6 +145,7 @@ if (!defined('FileData_class')) {
           $this->status = $row['status'];
           $this->Denumire = $row['Denumire'];
           $this->informatie = $row['informatie'];
+          $this->file_author = $row['file_author'];
           $this->department = $row['department'];
           $this->default_rights = $row['default_rights'];
         }
@@ -170,6 +173,7 @@ if (!defined('FileData_class')) {
                 default_rights = :default_rights,
                 Denumire = :Denumire,
                 informatie = :informatie,
+                file_author = :file_author,
                WHERE
                 id = :id
             ";
@@ -182,6 +186,7 @@ if (!defined('FileData_class')) {
         ':comment' => $this->comment,
         ':Denumire' => $this->Denumire,
         ':informatie' => $this->informatie,
+        ':file_author' => $this->file_author,
         ':status' => $this->status,
         ':department' => $this->department,
         ':default_rights' => $this->default_rights,
@@ -362,6 +367,16 @@ if (!defined('FileData_class')) {
     function setObjectName()
     {
       return $this->Denumire;
+    }
+
+    function getFIleAuthorName()
+    {
+      return $this->file_author;
+    }
+
+    function setFileAuthorName()
+    {
+      return $this->file_author;
     }
 
     function getInformationName()

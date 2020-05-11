@@ -85,6 +85,7 @@ if (!isset($_REQUEST['submit'])) {
         $informatie = $filedata->getInformationName();
         $owner_id = $filedata->getOwner();
         $department = $filedata->getDepartment();
+        $file_author = $filedata->getFIleAuthorName();
 
         //CHM
         $table_name_query = "SELECT table_name FROM {$GLOBALS['CONFIG']['db_prefix']}udf WHERE field_type = '4'";
@@ -155,6 +156,7 @@ if (!isset($_REQUEST['submit'])) {
         $GLOBALS['smarty']->assign('comment', $comment);
         $GLOBALS['smarty']->assign('Denumire', $Denumire);
         $GLOBALS['smarty']->assign('informatie', $informatie);
+        $GLOBALS['smarty']->assign('file_author', $file_author);
         $GLOBALS['smarty']->assign('db_prefix', $GLOBALS['CONFIG']['db_prefix']);
 
         display_smarty_template('edit.tpl');
@@ -202,6 +204,7 @@ if (!isset($_REQUEST['submit'])) {
     $filedata->setComment($_REQUEST['comment']);
     $filedata->setObjectName($_REQUEST['Denumire']);
     $filedata->setInformationName($_REQUEST['informatie']);
+    $filedata->setFileAuthorName($_REQUEST['file_author']);
     if (isset($_REQUEST['file_owner'])) {
         $filedata->setOwner($_REQUEST['file_owner']);
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 10, 2020 at 09:18 PM
+-- Generation Time: May 11, 2020 at 10:13 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.12
 
@@ -57,7 +57,13 @@ INSERT INTO `odm_access_log` (`file_id`, `user_id`, `action`) VALUES
 (5, 1, 'A'),
 (5, 1, 'Y'),
 (6, 3, 'A'),
-(3, 1, 'V');
+(3, 1, 'V'),
+(6, 1, 'Y'),
+(6, 3, 'V'),
+(4, 1, 'Y'),
+(7, 1, 'A'),
+(8, 1, 'A'),
+(8, 1, 'Y');
 
 -- --------------------------------------------------------
 
@@ -103,6 +109,19 @@ INSERT INTO `odm_category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `odm_classes`
+--
+
+DROP TABLE IF EXISTS `odm_classes`;
+CREATE TABLE IF NOT EXISTS `odm_classes` (
+  `classes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` int(11) NOT NULL,
+  PRIMARY KEY (`classes_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `odm_data`
 --
 
@@ -123,23 +142,25 @@ CREATE TABLE IF NOT EXISTS `odm_data` (
   `reviewer_comments` varchar(255) DEFAULT NULL,
   `Denumire` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `informatie` varchar(255) DEFAULT NULL,
+  `file_author` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `data_idx` (`id`,`owner`),
   KEY `id` (`id`),
   KEY `id_2` (`id`),
   KEY `publishable` (`publishable`),
   KEY `description` (`description`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odm_data`
 --
 
-INSERT INTO `odm_data` (`id`, `category`, `owner`, `realname`, `created`, `description`, `comment`, `status`, `department`, `default_rights`, `publishable`, `reviewer`, `reviewer_comments`, `Denumire`, `informatie`) VALUES
-(3, 1, 1, 'CEC.docx', '2020-05-10 20:22:11', 'gddfdf', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'aaaaaaa', NULL),
-(4, 1, 1, 'CEC.docx', '2020-05-10 20:22:40', 'dfdfddfdaa', NULL, 0, 1, 0, 0, NULL, NULL, 'aaaa', NULL),
-(5, 1, 1, 'CEC.docx', '2020-05-10 20:53:28', 'fgfgfg', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'denumire', 'informatie'),
-(6, 1, 3, 'CEC.docx', '2020-05-10 20:55:10', 'djfdjfh', NULL, 0, NULL, 0, 0, NULL, NULL, 'djfhdjfh', 'jdghjdf');
+INSERT INTO `odm_data` (`id`, `category`, `owner`, `realname`, `created`, `description`, `comment`, `status`, `department`, `default_rights`, `publishable`, `reviewer`, `reviewer_comments`, `Denumire`, `informatie`, `file_author`) VALUES
+(3, 1, 1, 'CEC.docx', '2020-05-10 20:22:11', 'gddfdf', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'aaaaaaa', NULL, NULL),
+(4, 1, 1, 'CEC.docx', '2020-05-10 20:22:40', 'dfdfddfdaa', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'aaaa', NULL, NULL),
+(5, 1, 1, 'CEC.docx', '2020-05-10 20:53:28', 'fgfgfg', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'denumire', 'informatie', NULL),
+(7, 1, 1, 'CEC.docx', '2020-05-11 13:08:44', 'Lorem ipsum dolor sit amet', NULL, 0, 1, 0, 0, NULL, NULL, 'Pasteluri', 'Romana', NULL),
+(8, 1, 1, 'CEC.docx', '2020-05-11 13:12:20', 'Lorem ipsum dolor sit amet', NULL, 0, 1, 0, 1, 1, 'To=Author(s);Subject=;Comments=;', 'Pasteluri', 'Romana', 'Vasile Alecsandri');
 
 -- --------------------------------------------------------
 
@@ -187,7 +208,9 @@ INSERT INTO `odm_dept_perms` (`fid`, `dept_id`, `rights`) VALUES
 (3, 1, 1),
 (4, 1, 1),
 (5, 1, 1),
-(6, 1, 0);
+(6, 1, 0),
+(7, 1, 1),
+(8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -301,7 +324,9 @@ INSERT INTO `odm_log` (`id`, `modified_on`, `modified_by`, `note`, `revision`) V
 (3, '2020-05-10 20:22:11', 'admin', 'Initial import', 'current'),
 (4, '2020-05-10 20:22:40', 'admin', 'Initial import', 'current'),
 (5, '2020-05-10 20:53:29', 'admin', 'Initial import', 'current'),
-(6, '2020-05-10 20:55:10', 'user', 'Initial import', 'current');
+(6, '2020-05-10 20:55:10', 'user', 'Initial import', 'current'),
+(7, '2020-05-11 13:08:44', 'admin', 'Initial import', 'current'),
+(8, '2020-05-11 13:12:20', 'admin', 'Initial import', 'current');
 
 -- --------------------------------------------------------
 
@@ -463,7 +488,9 @@ INSERT INTO `odm_user_perms` (`fid`, `uid`, `rights`) VALUES
 (3, 1, 4),
 (4, 1, 4),
 (5, 1, 4),
-(6, 3, 4);
+(6, 3, 4),
+(7, 1, 4),
+(8, 1, 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

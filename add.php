@@ -273,7 +273,8 @@ if (!isset($_POST['submit'])) {
             default_rights,
             publishable,
             Denumire,
-            informatie
+            informatie,
+            file_author
         )
             VALUES
         (
@@ -288,7 +289,8 @@ if (!isset($_POST['submit'])) {
             0,
             $publishable,
             :Denumire,
-            :informatie
+            :informatie,
+            :file_author
         )";
 
         $file_data_stmt = $pdo->prepare($file_data_query);
@@ -301,6 +303,7 @@ if (!isset($_POST['submit'])) {
         $file_data_stmt->bindParam(':comment', $_REQUEST['comment']);
         $file_data_stmt->bindParam(':Denumire', $_REQUEST['Denumire']);
         $file_data_stmt->bindParam(':informatie', $_REQUEST['informatie']);
+        $file_data_stmt->bindParam(':file_author', $_REQUEST['file_author']);
 
         $file_data_stmt->execute();
 

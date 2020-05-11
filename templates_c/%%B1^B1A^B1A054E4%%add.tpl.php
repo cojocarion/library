@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-05-10 21:11:21
+<?php /* Smarty version 2.6.28, created on 2020-05-11 10:07:57
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/add.tpl */ ?>
 
 
@@ -95,12 +95,12 @@ if ($this->_foreach['loop1']['total'] > 0):
             </select>
         </td>
     </tr>
-      <tr>
+   <tr>
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Autor</a>
         </td>
-        <td colspan="3"><input tabindex="5" type="Text" name="comment" size="50"></td>
-    </tr>
+        <td colspan="3"><input tabindex="5" type="Text" name="file_author" size="50"></td>
+    </tr>>
      <tr>
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>

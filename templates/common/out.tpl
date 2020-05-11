@@ -35,7 +35,7 @@
                 {/if}
             <td><a href="{$item.details_link}">{$item.filename}</a></td>
             <td >{$item.description}</td>
-            <td>{$item.owner_name}</td>
+            <td>{$item.file_author}</td>
              <td>{$item.Denumire}</td>
              <td>{$item.informatie}</td>
              <td>{$item.cat_name}</td>
