@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-05-11 10:07:57
+<?php /* Smarty version 2.6.28, created on 2020-05-11 10:26:06
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/add.tpl */ ?>
 
 
@@ -111,7 +111,13 @@ if ($this->_foreach['loop1']['total'] > 0):
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Limba</a>
         </td>
-        <td colspan="3"><input tabindex="5" type="Text" name="informatie" size="50"></td>
+          <td colspan=3>
+            <select tabindex=2 name="informatie" >
+                <option value="Romana">Romana</option>
+                <option value="Engleza">Engleza</option>
+                <option value="Rusa">Rusa</option>
+            </select>
+        </td>
     </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">

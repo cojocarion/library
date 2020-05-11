@@ -78,7 +78,13 @@
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Limba</a>
         </td>
-        <td colspan="3"><input tabindex="5" type="Text" name="informatie" size="50"></td>
+          <td colspan=3>
+            <select tabindex=2 name="informatie" >
+                <option value="Romana">Romana</option>
+                <option value="Engleza">Engleza</option>
+                <option value="Rusa">Rusa</option>
+            </select>
+        </td>
     </tr>
     <!-- Set Department rights on the file -->
     <tr id="departmentSelect">
