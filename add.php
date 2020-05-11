@@ -274,7 +274,8 @@ if (!isset($_POST['submit'])) {
             publishable,
             Denumire,
             informatie,
-            file_author
+            file_author,
+            school_class
         )
             VALUES
         (
@@ -290,7 +291,8 @@ if (!isset($_POST['submit'])) {
             $publishable,
             :Denumire,
             :informatie,
-            :file_author
+            :file_author,
+            :school_class
         )";
 
         $file_data_stmt = $pdo->prepare($file_data_query);
@@ -304,6 +306,7 @@ if (!isset($_POST['submit'])) {
         $file_data_stmt->bindParam(':Denumire', $_REQUEST['Denumire']);
         $file_data_stmt->bindParam(':informatie', $_REQUEST['informatie']);
         $file_data_stmt->bindParam(':file_author', $_REQUEST['file_author']);
+        $file_data_stmt->bindParam(':school_class', $_REQUEST['school_class']);
 
         $file_data_stmt->execute();
 

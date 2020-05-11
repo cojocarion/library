@@ -86,6 +86,8 @@ if (!isset($_REQUEST['submit'])) {
         $owner_id = $filedata->getOwner();
         $department = $filedata->getDepartment();
         $file_author = $filedata->getFIleAuthorName();
+        $school_class = $filedata->getClassesName();
+        
 
         //CHM
         $table_name_query = "SELECT table_name FROM {$GLOBALS['CONFIG']['db_prefix']}udf WHERE field_type = '4'";

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-05-11 10:07:47
+<?php /* Smarty version 2.6.28, created on 2020-05-11 11:28:22
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/out.tpl */ ?>
 <div id="filetable_wrapper">
 <form name="table" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>
@@ -64,7 +64,7 @@ if ($this->_foreach['file_list']['total'] > 0):
 </td>
              <td><?php echo $this->_tpl_vars['item']['cat_name']; ?>
 </td>
-            <td><?php echo $this->_tpl_vars['item']['dept_name']; ?>
+            <td><?php echo $this->_tpl_vars['item']['school_class']; ?>
 </td>
             <td ><?php echo $this->_tpl_vars['item']['filesize']; ?>
 </td>

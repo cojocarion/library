@@ -60,6 +60,7 @@ if (!defined('FileData_class')) {
     var $Denumire;
     var $informatie;
     var $file_author;
+    var $school_class;
     protected $connection;
 
     function FileData($id, $connection)
@@ -124,7 +125,8 @@ if (!defined('FileData_class')) {
                 default_rights,
                 Denumire,
                 informatie,
-                file_author
+                file_author,
+                school_class
               FROM
                 {$GLOBALS['CONFIG']['db_prefix']}$this->tablename
               WHERE
@@ -146,6 +148,7 @@ if (!defined('FileData_class')) {
           $this->Denumire = $row['Denumire'];
           $this->informatie = $row['informatie'];
           $this->file_author = $row['file_author'];
+          $this->school_class = $row['school_class'];
           $this->department = $row['department'];
           $this->default_rights = $row['default_rights'];
         }
@@ -174,6 +177,7 @@ if (!defined('FileData_class')) {
                 Denumire = :Denumire,
                 informatie = :informatie,
                 file_author = :file_author,
+                school_class = :school_class,
                WHERE
                 id = :id
             ";
@@ -187,6 +191,7 @@ if (!defined('FileData_class')) {
         ':Denumire' => $this->Denumire,
         ':informatie' => $this->informatie,
         ':file_author' => $this->file_author,
+        ':school_class' => $this->school_class,
         ':status' => $this->status,
         ':department' => $this->department,
         ':default_rights' => $this->default_rights,
@@ -379,6 +384,16 @@ if (!defined('FileData_class')) {
       return $this->file_author;
     }
 
+    function getClassesName()
+    {
+      return $this->school_class;
+    }
+
+    function setClassesName()
+    {
+      return $this->school_class;
+    }
+
     function getInformationName()
     {
       return $this->informatie;
@@ -457,11 +472,7 @@ if (!defined('FileData_class')) {
       $stmt->execute(array(':department_id' => $this->getDepartment()));
       $result = $stmt->fetchColumn();
 
-      if ($stmt->rowCount() == 0) {
-        echo ('ERROR: No database entry exists in department table for ID = ' . $this->getDepartment() . '.');
-        return "ERROR";
-        //exit;
-      }
+    
 
       return $result;
     }

@@ -39,7 +39,7 @@
              <td>{$item.Denumire}</td>
              <td>{$item.informatie}</td>
              <td>{$item.cat_name}</td>
-            <td>{$item.dept_name}</td>
+            <td>{$item.school_class}</td>
             <td >{$item.filesize}</td>
             <td class="center">
                 {if $item.lock eq false}

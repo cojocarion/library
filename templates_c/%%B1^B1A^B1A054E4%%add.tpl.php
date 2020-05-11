@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2020-05-11 10:26:06
+<?php /* Smarty version 2.6.28, created on 2020-05-11 11:34:19
          compiled from C:%5Cwamp%5Cwww%5Cdoc//templates/common/add.tpl */ ?>
 
 
@@ -39,7 +39,6 @@ if ($this->_foreach['loop1']['total'] > 0):
     
 <?php if ($this->_tpl_vars['is_admin'] == true): ?>
     <tr>
-
         <td>
             <?php echo $this->_tpl_vars['g_lang_editpage_assign_owner']; ?>
 
@@ -53,25 +52,6 @@ if ($this->_foreach['loop1']['total'] > 0):
 " <?php echo $this->_tpl_vars['user']['selected']; ?>
 ><?php echo $this->_tpl_vars['user']['last_name']; ?>
 , <?php echo $this->_tpl_vars['user']['first_name']; ?>
-</option>
-            <?php endforeach; endif; unset($_from); ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo $this->_tpl_vars['g_lang_editpage_assign_department']; ?>
-
-        </td>
-        <td>
-               
-            <select name="file_department">
-            <?php $_from = $this->_tpl_vars['avail_depts']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['dept']):
-?>
-                <option value="<?php echo $this->_tpl_vars['dept']['id']; ?>
-" <?php echo $this->_tpl_vars['dept']['selected']; ?>
-><?php echo $this->_tpl_vars['dept']['name']; ?>
 </option>
             <?php endforeach; endif; unset($_from); ?>
             </select>
@@ -95,12 +75,32 @@ if ($this->_foreach['loop1']['total'] > 0):
             </select>
         </td>
     </tr>
+    <tr>
+        <td>
+            <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Clasa</a>
+        </td>
+          <td colspan=3>
+            <select tabindex=2 name="school_class">
+                <option value="Clasa 1">Clasa 1</option>
+                <option value="Clasa 2">Clasa 2</option>
+                <option value="Clasa 3">Clasa 3</option>
+                <option value="Clasa 4">Clasa 4</option>
+                <option value="Clasa 5">Clasa 5</option>
+                <option value="Clasa 6">Clasa 6</option>
+                <option value="Clasa 7">Clasa 7</option>
+                <option value="Clasa 9">Clasa 9</option>
+                <option value="Clasa 10">Clasa 10</option>
+                <option value="Clasa 11">Clasa 11</option>
+                <option value="Clasa 12">Clasa 12</option>
+            </select>
+        </td>
+    </tr>
    <tr>
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Autor</a>
         </td>
         <td colspan="3"><input tabindex="5" type="Text" name="file_author" size="50"></td>
-    </tr>>
+    </tr>
      <tr>
         <td>
             <a class="body" href="help.html#Add_File_-_Description" onClick="return popup(this, 'Help')" style="text-decoration:none">Denumire</a>

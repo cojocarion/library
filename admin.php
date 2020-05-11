@@ -46,7 +46,7 @@ $last_message = (isset($_REQUEST['last_message']) ? $_REQUEST['last_message'] : 
 draw_header(msg('label_admin'), $last_message);
 ?>
     <table border="1" cellspacing="5" cellpadding="5" >
-        <th bgcolor ="#83a9f7"><font color="#FFFFFF"><?php echo msg('users')?></font></th><th bgcolor ="#83a9f7"><font color="#FFFFFF"><?php echo msg('label_department')?></font></th><th bgcolor ="#83a9f7"><font color="#FFFFFF"><?php echo msg('category')?></font></th><?php if($user_obj->isRoot()) echo '<th bgcolor ="#83a9f7"><font color="#FFFFFF">' . msg('file') . '</th></font>'; ?>
+        <th bgcolor ="#83a9f7"><font color="#FFFFFF"><?php echo msg('users')?></font></th><th bgcolor ="#83a9f7"><font color="#FFFFFF"><?php echo msg('category')?></font></th><?php if($user_obj->isRoot()) echo '<th bgcolor ="#83a9f7"><font color="#FFFFFF">' . msg('file') . '</th></font>'; ?>
         <?php
         if($user_obj->isRoot())
             udf_admin_header();
@@ -66,23 +66,6 @@ draw_header(msg('label_admin'), $last_message);
                     </tr>
                     <tr>
                         <td><b><a href="<?php echo 'user.php?submit=showpick&state=' . ($_REQUEST['state']+1); ?>"><?php echo msg('label_display')?></a></b></td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <!-- Department Admin -->
-                <table border="0">
-                    <tr>
-                        <td><b><a href="<?php echo 'department.php?submit=add&state=' . ($_REQUEST['state']+1); ?>"><?php echo msg('label_add')?></a></b></td>
-                    </tr>
-                    <tr>
-                        <td><b><a href="<?php echo 'department.php?submit=deletepick&state=' . ($_REQUEST['state']+1); ?>"><?php echo msg('label_delete')?></a></b></td>
-                    </tr>
-                    <tr>
-                        <td><b><a href="<?php echo 'department.php?submit=updatepick&state=' . ($_REQUEST['state']+1); ?>"><?php echo msg('label_update')?></a></b></td>
-                    </tr>
-                    <tr>
-                        <td><b><a href="<?php echo 'department.php?submit=showpick&state=' . ($_REQUEST['state']+1); ?>"><?php echo msg('label_display')?></a></b></td>
                     </tr>
                 </table>
             </td>
